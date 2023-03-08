@@ -24,6 +24,10 @@ import {
 import '@spectrum-web-components/icons-ui/icons/sp-icon-checkmark100.js';
 import { LikeAnchor } from '@spectrum-web-components/shared/src/like-anchor.js';
 import { Focusable } from '@spectrum-web-components/shared/src/focusable.js';
+import {
+    ObserveSlotPresence,
+    ObserveSlotText,
+} from '@spectrum-web-components/shared';
 import '@spectrum-web-components/icons-ui/icons/sp-icon-chevron100.js';
 import chevronStyles from '@spectrum-web-components/icon/src/spectrum-icon-chevron.css.js';
 import { openOverlay } from '@spectrum-web-components/overlay/src/loader.js';
@@ -108,7 +112,9 @@ const removeEvent = new MenuItemRemovedEvent();
  * @fires sp-menu-item-added - announces the item has been added so a parent menu can take ownerships
  * @fires sp-menu-item-removed - announces when removed from the DOM so the parent menu can remove ownership and update selected state
  */
-export class MenuItem extends LikeAnchor(Focusable) {
+export class MenuItem extends LikeAnchor(
+    ObserveSlotText(ObserveSlotPresence(Focusable, '[slot="icon"]'))
+) {
     public static override get styles(): CSSResultArray {
         return [menuItemStyles, checkmarkStyles, chevronStyles];
     }
@@ -173,6 +179,10 @@ export class MenuItem extends LikeAnchor(Focusable) {
 
     public override get focusElement(): HTMLElement {
         return this;
+    }
+
+    protected get hasIcon(): boolean {
+        return this.slotContentIsPresent;
     }
 
     public get itemChildren(): MenuItemChildren {
@@ -268,19 +278,22 @@ export class MenuItem extends LikeAnchor(Focusable) {
 
     protected override render(): TemplateResult {
         return html`
+            ${this.selected
+                ? html`
+                      <sp-icon-checkmark100
+                          id="selected"
+                          class="spectrum-UIIcon-Checkmark100 icon checkmark ${this
+                              .hasIcon
+                              ? 'checkmark--withAdjacentIcon'
+                              : 'checkmark--withAdjacentText'}"
+                      ></sp-icon-checkmark100>
+                  `
+                : html``}
             <slot name="icon"></slot>
             <div id="label">
                 <slot id="slot"></slot>
             </div>
             <slot name="value"></slot>
-            ${this.selected
-                ? html`
-                      <sp-icon-checkmark100
-                          id="selected"
-                          class="spectrum-UIIcon-Checkmark100 icon checkmark checkmark--withText"
-                      ></sp-icon-checkmark100>
-                  `
-                : html``}
             ${this.href && this.href.length > 0
                 ? super.renderAnchor({
                       id: 'button',
@@ -296,7 +309,10 @@ export class MenuItem extends LikeAnchor(Focusable) {
             ${this.hasSubmenu
                 ? html`
                       <sp-icon-chevron100
-                          class="spectrum-UIIcon-ChevronRight100 chevron icon"
+                          class="spectrum-UIIcon-ChevronRight100 chevron icon ${this
+                              .hasIcon
+                              ? 'chevron--withAdjacentIcon'
+                              : 'chevron--withAdjacentText'}"
                       ></sp-icon-chevron100>
                   `
                 : html``}

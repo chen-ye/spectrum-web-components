@@ -156,7 +156,7 @@ governing permissions and limitations under the License.
         --spectrum-line-height-100
     ); /* .spectrum-Menu */
     --spectrum-menu-item-label-line-height-cjk: var(
-        --spectrum-line-height-cjk-100
+        --spectrum-cjk-line-height-100
     );
     --spectrum-menu-item-label-to-description-spacing: var(
         --spectrum-menu-item-label-to-description
@@ -202,7 +202,7 @@ governing permissions and limitations under the License.
         --spectrum-line-height-100
     );
     --spectrum-menu-item-description-line-height-cjk: var(
-        --spectrum-line-height-cjk-100
+        --spectrum-cjk-line-height-100
     );
     --spectrum-menu-item-description-color-default: var(
         --spectrum-neutral-subdued-content-color-default
@@ -221,10 +221,10 @@ governing permissions and limitations under the License.
     );
     --spectrum-menu-section-header-line-height: var(--spectrum-line-height-100);
     --spectrum-menu-section-header-line-height-cjk: var(
-        --spectrum-line-height-cjk-100
+        --spectrum-cjk-line-height-100
     );
     --spectrum-menu-section-header-font-weight: var(
-        --spectrum-font-weight-bold
+        --spectrum-bold-font-weight
     );
     --spectrum-menu-section-header-color: var(--spectrum-gray-900);
     --spectrum-menu-collapsible-icon-color: var(--spectrum-gray-900);
@@ -396,4 +396,22 @@ governing permissions and limitations under the License.
     ); /* .spectrum-Menu:lang(ja) .spectrum-Menu-itemDescription,
    * .spectrum-Menu:lang(zh) .spectrum-Menu-itemDescription,
    * .spectrum-Menu:lang(ko) .spectrum-Menu-itemDescription */
+}
+:host([selects]) ::slotted(sp-menu-item) ::slotted(sp-menu-item) {
+    --spectrum-menu-checkmark-display: var(
+        --spectrum-menu-checkmark-display-hidden
+    ); /* .spectrum-Menu.is-selectable .spectrum-Menu-item */
+    padding-inline-start: var(
+        --mod-menu-item-selectable-edge-to-text-not-selected,
+        var(--spectrum-menu-item-selectable-edge-to-text-not-selected)
+    );
+}
+:host([selects]) ::slotted(sp-menu-item) .spectrum-Menu-item--is-selected {
+    --spectrum-menu-checkmark-display: var(
+        --spectrum-menu-checkmark-display-shown
+    ); /* .spectrum-Menu.is-selectable .spectrum-Menu-item--is-selected */
+    padding-inline-start: var(
+        --mod-menu-item-label-inline-edge-to-content,
+        var(--spectrum-menu-item-label-inline-edge-to-content)
+    );
 }

@@ -77,16 +77,8 @@ const config = {
                     selector: /.spectrum-Menu .spectrum-Menu(?!-)/,
                 },
                 {
-                    replacement:
-                        ':host([dir="ltr"][selects]) ::slotted(sp-menu-item[selected])',
-                    selector:
-                        '.spectrum-Menu[dir=ltr].is-selectable .spectrum-Menu-item.is-selected',
-                },
-                {
-                    replacement:
-                        ':host([dir="rtl"][selects]) ::slotted(sp-menu-item[selected])',
-                    selector:
-                        '.spectrum-Menu[dir=rtl].is-selectable .spectrum-Menu-item.is-selected',
+                    replacement: ':host([selects]) ::slotted(sp-menu-item)',
+                    selector: '.spectrum-Menu.is-selectable',
                 },
             ],
         },
@@ -113,7 +105,7 @@ const config = {
                 },
                 {
                     type: 'boolean',
-                    selector: '.is-selected',
+                    selector: '.spectrum-Menu-item--is-selected',
                     name: 'selected',
                 },
             ],
@@ -143,7 +135,10 @@ const config = {
                     selector: '.spectrum-Icon',
                 },
             ],
-            exclude: [/\.spectrum-Menu(?!-[item|itemLabel|checkmark|chevron])/],
+            exclude: [
+                /\.spectrum-Menu(?!-[item|itemLabel|checkmark|chevron])/,
+                /\.spectrum-Menu-item .spectrum-Menu-item/,
+            ],
             complexSelectors: [
                 {
                     replacement: ':host([no-wrap]) #label',
@@ -169,6 +164,18 @@ const config = {
                     selector:
                         /\.spectrum-Menu-item\[dir\=ltr\]\s*\.spectrum-Menu-item \.spectrum-Menu-itemIcon\s?\+\s?\.spectrum-Menu-itemLabel/,
                 },
+                {
+                    replacement:
+                        ':host([dir="ltr"][selected]) ::slotted(sp-menu-item[selected])',
+                    selector:
+                        '.spectrum-Menu.is-selectable .spectrum-Menu-item--is-selected',
+                },
+                {
+                    replacement:
+                        ':host([dir="rtl"][selects]) ::slotted(sp-menu-item[selected])',
+                    selector:
+                        '.spectrum-Menu.is-selectable .spectrum-Menu-item--is-selected',
+                },
             ],
         },
         {
@@ -185,6 +192,16 @@ const config = {
                 selector: '.spectrum-Menu-chevron',
                 shadowSelector: '.chevron',
             },
+            classes: [
+                {
+                    selector: '.spectrum-Menu-chevron--withAdjacentIcon',
+                    name: 'chevron--withAdjacentIcon',
+                },
+                {
+                    selector: '.spectrum-Menu-chevron--withAdjacentText',
+                    name: 'chevron--withAdjacentText',
+                },
+            ],
             exclude: [/\.spectrum-Menu(?!-chevron)/, /^\[dir=/],
         },
         {
@@ -197,6 +214,10 @@ const config = {
                 {
                     selector: '.spectrum-Menu-checkmark--withAdjacentText',
                     name: 'checkmark--withAdjacentText',
+                },
+                {
+                    selector: '.spectrum-Menu-checkmark--withAdjacentIcon',
+                    name: 'checkmark--withAdjacentIcon',
                 },
             ],
             exclude: [/\.spectrum-Menu(?!-checkmark)/, /^\[dir=/],

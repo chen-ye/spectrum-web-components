@@ -41,7 +41,7 @@ governing permissions and limitations under the License.
         var(--spectrum-menu-item-label-text-to-visual)
     ); /* .spectrum-Menu-checkmark--withAdjacentText */
 }
-.spectrum-Menu-checkmark--withAdjacentIcon {
+.checkmark--withAdjacentIcon {
     margin-inline-end: var(
         --mod-menu-item-text-to-control,
         var(--spectrum-menu-item-text-to-control)

@@ -54,21 +54,11 @@ governing permissions and limitations under the License.
     text-decoration: none;
 }
 :host {
-    grid-template-areas: '.            chevronAreaCollapsible .             iconArea sectionHeadingArea  .         .           .                 ' 'selectedArea chevronAreaCollapsible checkmarkArea iconArea labelArea        valueArea actionsArea chevronAreaDrillIn' '.            .                      .             .        descriptionArea  .         .           .                 ' '.            .                      .             .        submenuArea      .         .           .                 '; /* .spectrum-Menu-item,
+    display: grid; /* .spectrum-Menu-item,
    * .spectrum-Menu li:not(.spectrum-Menu-item, .spectrum-Menu-divider) */
+    grid-template-areas: '.            chevronAreaCollapsible .             iconArea sectionHeadingArea  .         .           .                 ' 'selectedArea chevronAreaCollapsible checkmarkArea iconArea labelArea        valueArea actionsArea chevronAreaDrillIn' '.            .                      .             .        descriptionArea  .         .           .                 ' '.            .                      .             .        submenuArea      .         .           .                 ';
     grid-template-columns: auto auto auto auto 1fr auto auto auto;
-}
-:host {
-    display: grid; /* .spectrum-Menu-item .spectrum-Menu-item */
-    grid-template-areas: 'submenuItemLabelArea submenuItemValueArea';
-    grid-template-columns: auto auto;
     grid-template-rows: 1fr auto;
-}
-:host #label {
-    grid-area: submenuItemLabelArea; /* .spectrum-Menu-item .spectrum-Menu-item .spectrum-Menu-itemLabel */
-}
-:host .spectrum-Menu-itemValue {
-    grid-area: submenuItemValueArea; /* .spectrum-Menu-item .spectrum-Menu-item .spectrum-Menu-itemValue */
 }
 :host(.focus-visible),
 :host(:focus),
@@ -507,24 +497,6 @@ governing permissions and limitations under the License.
 .icon {
     align-self: center;
     grid-area: iconArea; /* .spectrum-Menu-itemIcon */
-}
-.spectrum-Menu-item--is-selectable {
-    --spectrum-menu-checkmark-display: var(
-        --spectrum-menu-checkmark-display-hidden
-    ); /* .spectrum-Menu-item--is-selectable */
-    padding-inline-start: var(
-        --mod-menu-item-selectable-edge-to-text-not-selected,
-        var(--spectrum-menu-item-selectable-edge-to-text-not-selected)
-    );
-}
-.spectrum-Menu-item--is-selected {
-    --spectrum-menu-checkmark-display: var(
-        --spectrum-menu-checkmark-display-shown
-    ); /* .spectrum-Menu-item--is-selected */
-    padding-inline-start: var(
-        --mod-menu-item-label-inline-edge-to-content,
-        var(--spectrum-menu-item-label-inline-edge-to-content)
-    );
 }
 #label {
     color: var(

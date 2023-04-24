@@ -11,6 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import {
+    aSillyDelay,
     escapeEvent,
     fixture,
     isOnTopLayer,
@@ -36,6 +37,7 @@ import '@spectrum-web-components/popover/sp-popover.js';
 import { Popover } from '@spectrum-web-components/popover';
 import '@spectrum-web-components/theme/sp-theme.js';
 import { Theme } from '@spectrum-web-components/theme';
+import { resetMouse, sendMouse } from '@web/test-runner-commands';
 
 function pressKey(code: string): void {
     const up = new KeyboardEvent('keyup', {
@@ -52,6 +54,13 @@ const pressEscape = (): void => {
 };
 
 const pressSpace = (): void => pressKey('Space');
+
+async function realClick(x: number, y: number): Promise<void> {
+    await sendMouse({ type: 'move', position: [x, y] });
+    await sendMouse({ type: 'down' });
+    await sendMouse({ type: 'up' });
+    await resetMouse();
+}
 
 export const runOverlayTriggerTests = (type: string): void => {
     describe(`Overlay Trigger - ${type}`, () => {
@@ -146,6 +155,8 @@ export const runOverlayTriggerTests = (type: string): void => {
             });
 
             it('opens a popover', async function () {
+                await aSillyDelay();
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'popover not available at point'
@@ -155,6 +166,9 @@ export const runOverlayTriggerTests = (type: string): void => {
                 const open = oneEvent(this.outerTrigger, 'sp-opened');
                 this.outerButton.click();
                 await open;
+                await elementUpdated(this.outerClickContent);
+                await aSillyDelay();
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'popover available at point'
@@ -280,7 +294,7 @@ export const runOverlayTriggerTests = (type: string): void => {
                 ).to.be.false;
             });
 
-            it.skip('does not open a popover when [disabled]', async function () {
+            it('does not open a popover when [disabled]', async function () {
                 const root = this.outerTrigger.shadowRoot
                     ? this.outerTrigger.shadowRoot
                     : this.outerTrigger;
@@ -292,13 +306,16 @@ export const runOverlayTriggerTests = (type: string): void => {
                 let open = oneEvent(this.outerTrigger, 'sp-opened');
                 this.outerButton.click();
                 await open;
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'hover available at point'
                 ).to.be.true;
+
                 let closed = oneEvent(this.outerTrigger, 'sp-closed');
-                document.body.click();
+                await realClick(1, 1); // click on the document body
                 await closed;
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'hover not available at point'
@@ -312,13 +329,16 @@ export const runOverlayTriggerTests = (type: string): void => {
                 // The overlay shouldn't open here.
                 this.outerButton.click();
                 await aTimeout(150);
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'hover not available at point'
                 ).to.be.false;
+
                 // The overlay shouldn't open here, either.
                 triggerZone.dispatchEvent(new Event('mouseenter'));
                 await aTimeout(150);
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'hover not available at point'
@@ -332,10 +352,12 @@ export const runOverlayTriggerTests = (type: string): void => {
                 open = oneEvent(this.outerTrigger, 'sp-opened');
                 this.outerButton.click();
                 await open;
+
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'hover available at point'
                 ).to.be.true;
+
                 closed = oneEvent(this.outerTrigger, 'sp-closed');
                 this.outerButton.click();
                 await closed;
@@ -346,7 +368,7 @@ export const runOverlayTriggerTests = (type: string): void => {
                 ).to.be.false;
             });
 
-            it.skip('opens a nested popover', async function () {
+            it('opens a nested popover', async function () {
                 expect(
                     await isOnTopLayer(this.outerClickContent),
                     'hover not available at point'
@@ -365,8 +387,8 @@ export const runOverlayTriggerTests = (type: string): void => {
                     await isOnTopLayer(this.outerClickContent),
                     'outer click content available at point'
                 ).to.be.true;
-                expect(isVisible(this.innerClickContent)).to.be.false;
 
+                expect(isVisible(this.innerClickContent)).to.be.false;
                 open = oneEvent(this.innerTrigger, 'sp-opened');
                 this.innerButton.click();
                 await open;

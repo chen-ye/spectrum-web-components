@@ -58,11 +58,8 @@ async function styledFixture<T extends Element>(
 }
 
 describe('Overlays', () => {
-    let testDiv!: HTMLDivElement;
-    let openOverlays: (() => void)[] = [];
-
-    beforeEach(async () => {
-        testDiv = await styledFixture<HTMLDivElement>(
+    beforeEach(async function () {
+        this.testDiv = await styledFixture<HTMLDivElement>(
             html`
                 <div id="top">
                     <style>
@@ -113,12 +110,7 @@ describe('Overlays', () => {
                 </div>
             `
         );
-        await elementUpdated(testDiv);
-    });
-
-    afterEach(() => {
-        openOverlays.map((close) => close());
-        openOverlays = [];
+        await elementUpdated(this.testDiv);
     });
 
     [
@@ -137,12 +129,12 @@ describe('Overlays', () => {
         'none',
     ].map((direction) => {
         const placement = direction as Placement;
-        it(`opens a popover - ${placement}`, async () => {
+        it(`opens a popover - ${placement}`, async function () {
             const clickSpy = spy();
-            const button = testDiv.querySelector(
+            const button = this.testDiv.querySelector(
                 '#first-button'
             ) as HTMLElement;
-            const outerPopover = testDiv.querySelector(
+            const outerPopover = this.testDiv.querySelector(
                 '#outer-popover'
             ) as Popover;
             outerPopover.addEventListener('click', () => {
@@ -150,35 +142,39 @@ describe('Overlays', () => {
             });
 
             expect(await isInteractive(outerPopover)).to.be.false;
+
             expect(button).to.exist;
 
             const opened = oneEvent(outerPopover, 'sp-opened');
-            openOverlays.push(
-                await Overlay.open(button, 'click', outerPopover, {
-                    delayed: false,
-                    placement,
-                    offset: 10,
-                })
-            );
+            await Overlay.open(button, 'click', outerPopover, {
+                delayed: false,
+                placement,
+                offset: 10,
+            });
+
             await opened;
+
             expect(await isInteractive(outerPopover)).to.be.true;
         });
     });
 
-    it(`opens a modal dialog`, async () => {
-        const button = testDiv.querySelector('#first-button') as HTMLElement;
-        const outerPopover = testDiv.querySelector('#outer-popover') as Popover;
+    it(`opens a modal dialog`, async function () {
+        const button = this.testDiv.querySelector(
+            '#first-button'
+        ) as HTMLElement;
+        const outerPopover = this.testDiv.querySelector(
+            '#outer-popover'
+        ) as Popover;
 
         expect(await isInteractive(outerPopover)).to.be.false;
 
         expect(button).to.exist;
 
         const opened = oneEvent(outerPopover, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(button, 'modal', outerPopover, {
-                delayed: false,
-            })
-        );
+        await Overlay.open(button, 'modal', outerPopover, {
+            delayed: false,
+        });
+
         await opened;
 
         const firstFocused = outerPopover.querySelector(
@@ -222,21 +218,24 @@ describe('Overlays', () => {
         expect(document.activeElement === button).to.be.false;
     });
 
-    it(`updates a popover`, async () => {
-        const button = testDiv.querySelector('#first-button') as HTMLElement;
-        const outerPopover = testDiv.querySelector('#outer-popover') as Popover;
+    it(`updates a popover`, async function () {
+        const button = this.testDiv.querySelector(
+            '#first-button'
+        ) as HTMLElement;
+        const outerPopover = this.testDiv.querySelector(
+            '#outer-popover'
+        ) as Popover;
 
         expect(await isInteractive(outerPopover)).to.be.false;
 
         expect(button).to.exist;
 
         const opened = oneEvent(outerPopover, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(button, 'click', outerPopover, {
-                delayed: false,
-                offset: 10,
-            })
-        );
+        await Overlay.open(button, 'click', outerPopover, {
+            delayed: false,
+            offset: 10,
+        });
+
         await opened;
 
         expect(await isInteractive(outerPopover)).to.be.true;
@@ -246,28 +245,35 @@ describe('Overlays', () => {
         expect(await isInteractive(outerPopover)).to.be.true;
     });
 
-    it(`opens a popover w/ delay`, async () => {
-        const button = testDiv.querySelector('#first-button') as HTMLElement;
-        const outerPopover = testDiv.querySelector('#outer-popover') as Popover;
+    it(`opens a popover w/ delay`, async function () {
+        const button = this.testDiv.querySelector(
+            '#first-button'
+        ) as HTMLElement;
+        const outerPopover = this.testDiv.querySelector(
+            '#outer-popover'
+        ) as Popover;
 
         expect(await isInteractive(outerPopover)).to.be.false;
         expect(button).to.exist;
 
         const opened = oneEvent(outerPopover, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(button, 'click', outerPopover, {
-                delayed: true,
-                offset: 10,
-            })
-        );
+        await Overlay.open(button, 'click', outerPopover, {
+            delayed: true,
+            offset: 10,
+        });
+
         await opened;
         expect(await isInteractive(outerPopover)).to.be.true;
     });
 
-    it('opens hover overlay', async () => {
-        const button = testDiv.querySelector('#first-button') as HTMLElement;
-        const hoverOverlay = testDiv.querySelector('#hover-1') as HTMLElement;
-        const clickOverlay = testDiv.querySelector(
+    it('opens hover overlay', async function () {
+        const button = this.testDiv.querySelector(
+            '#first-button'
+        ) as HTMLElement;
+        const hoverOverlay = this.testDiv.querySelector(
+            '#hover-1'
+        ) as HTMLElement;
+        const clickOverlay = this.testDiv.querySelector(
             '#outer-popover'
         ) as HTMLElement;
 
@@ -275,40 +281,44 @@ describe('Overlays', () => {
         expect(await isInteractive(clickOverlay)).to.be.false;
 
         let opened = oneEvent(hoverOverlay, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(button, 'hover', hoverOverlay, {
-                delayed: false,
-                placement: 'top',
-                offset: 10,
-            })
-        );
+        await Overlay.open(button, 'hover', hoverOverlay, {
+            delayed: false,
+            placement: 'top',
+            offset: 10,
+        });
+
         await opened;
         expect(await isInteractive(hoverOverlay)).to.be.true;
 
         opened = oneEvent(clickOverlay, 'sp-opened');
         const closed = oneEvent(hoverOverlay, 'sp-closed');
         // Opening click overlay should close the hover overlay
-        openOverlays.push(
-            await Overlay.open(button, 'click', clickOverlay, {
-                delayed: false,
-                placement: 'bottom',
-                offset: 10,
-            })
-        );
+        await Overlay.open(button, 'click', clickOverlay, {
+            delayed: false,
+            placement: 'bottom',
+            offset: 10,
+        });
+
         await opened;
         await closed;
+
         expect(
             await isInteractive(clickOverlay),
             'click overlay not interactive'
         ).to.be.true;
+
         expect(await isInteractive(hoverOverlay), 'hover overlay interactive')
             .to.be.false;
     });
 
-    it('opens custom overlay', async () => {
-        const button = testDiv.querySelector('#first-button') as HTMLElement;
-        const customOverlay = testDiv.querySelector('#hover-1') as HTMLElement;
-        const clickOverlay = testDiv.querySelector(
+    it('opens custom overlay', async function () {
+        const button = this.testDiv.querySelector(
+            '#first-button'
+        ) as HTMLElement;
+        const customOverlay = this.testDiv.querySelector(
+            '#hover-1'
+        ) as HTMLElement;
+        const clickOverlay = this.testDiv.querySelector(
             '#outer-popover'
         ) as HTMLElement;
 
@@ -319,30 +329,30 @@ describe('Overlays', () => {
         expect(await isInteractive(clickOverlay)).to.be.false;
 
         let opened = oneEvent(customOverlay, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(button, 'custom', customOverlay, {
-                delayed: false,
-                placement: 'top',
-                offset: 10,
-            })
-        );
+        await Overlay.open(button, 'custom', customOverlay, {
+            delayed: false,
+            placement: 'top',
+            offset: 10,
+        });
+
         await opened;
+
         expect(await isInteractive(customOverlay)).to.be.true;
 
         opened = oneEvent(clickOverlay, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(button, 'click', clickOverlay, {
-                delayed: false,
-                placement: 'bottom',
-                offset: 10,
-            })
-        );
+        await Overlay.open(button, 'click', clickOverlay, {
+            delayed: false,
+            placement: 'bottom',
+            offset: 10,
+        });
+
         await opened;
+
         expect(await isInteractive(clickOverlay), 'click content open').to.be
             .true;
     });
 
-    it('closes via events', async () => {
+    it('closes via events', async function () {
         const test = await fixture<HTMLDivElement>(html`
             <div>
                 <sp-popover id="root">
@@ -357,23 +367,24 @@ describe('Overlays', () => {
         const dialog = el.querySelector('sp-dialog') as Dialog;
 
         const opened = oneEvent(el, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(test, 'click', el, {
-                delayed: false,
-                placement: 'bottom',
-                offset: 10,
-            })
-        );
+        await Overlay.open(test, 'click', el, {
+            delayed: false,
+            placement: 'bottom',
+            offset: 10,
+        });
+
         await opened;
+
         expect(await isInteractive(el)).to.be.true;
 
         const closed = oneEvent(el, 'sp-closed');
         dialog.close();
         await closed;
+
         expect(await isInteractive(el)).to.be.false;
     });
 
-    it('closes an inline overlay when tabbing past the content', async () => {
+    it('closes an inline overlay when tabbing past the content', async function () {
         const el = await fixture<HTMLDivElement>(html`
             <div>
                 <sp-button class="trigger">Trigger</sp-button>
@@ -390,11 +401,10 @@ describe('Overlays', () => {
         const after = el.querySelector('#after') as HTMLAnchorElement;
 
         const opened = oneEvent(content, 'sp-opened');
-        openOverlays.push(
-            await Overlay.open(trigger, 'inline', content, {
-                receivesFocus: 'auto',
-            })
-        );
+        await Overlay.open(trigger, 'inline', content, {
+            receivesFocus: 'auto',
+        });
+
         await opened;
 
         expect(await isInteractive(content)).to.be.true;
@@ -421,7 +431,7 @@ describe('Overlays', () => {
         expect(await isInteractive(content)).to.be.false;
     });
 
-    it('closes an inline overlay when tabbing before the trigger', async () => {
+    it('closes an inline overlay when tabbing before the trigger', async function () {
         const el = await fixture<HTMLDivElement>(html`
             <div>
                 <input value="Before" id="before" />
@@ -440,7 +450,7 @@ describe('Overlays', () => {
         const input = el.querySelector('.content input') as HTMLInputElement;
         const before = el.querySelector('#before') as HTMLAnchorElement;
 
-        openOverlays.push(await Overlay.open(trigger, 'inline', content, {}));
+        await Overlay.open(trigger, 'inline', content, {});
 
         trigger.focus();
         await sendKeys({

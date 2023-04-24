@@ -255,6 +255,8 @@ describe('card', () => {
             'sp-link[href="https://google.com"]'
         ) as HTMLElement;
         link.setAttribute('style', 'display: block');
+        await elementUpdated(link);
+
         boundingRect = link.getBoundingClientRect();
         await sendMouse({
             steps: [

@@ -25,6 +25,7 @@ import { Theme } from '@spectrum-web-components/theme';
 import { TemplateResult } from '@spectrum-web-components/base';
 
 import { sendMouse } from './plugins/browser.js';
+import { resetMouse } from '@web/test-runner-commands';
 
 export async function testForLitDevWarnings(
     fixture: () => Promise<HTMLElement>
@@ -59,8 +60,23 @@ export function waitForPredicate(
     });
 }
 
-export function isVisible(element: HTMLElement) {
-    return !!element.offsetParent;
+// walk up the composed document tree and verify that
+// the element is connected to the document root,
+// and that neither it nor any of its ancestors are visibly hidden
+export function isVisible(element: unknown): boolean {
+    if (!(element instanceof HTMLElement)) return false;
+    if (element.offsetParent == null) return false;
+    if (!element.isConnected) return false;
+
+    const style = getComputedStyle(element);
+    if (style.display === 'none' || style.visibility === 'hidden') return false;
+
+    const parent = element.parentNode;
+    if (parent instanceof ShadowRoot) {
+        return isVisible(parent.host);
+    }
+
+    return parent === document || isVisible(parent);
 }
 
 const keyboardEvent = (
@@ -203,7 +219,18 @@ export async function isInteractive(
             },
         ],
     });
-    return clickSpy.callCount === 1;
+    // FF is flaky with click detection
+    await nextFrame();
+    await resetMouse();
+    return clickSpy.callCount > 0;
+}
+
+// Some browsers (FF!) seem to need some time to get "ready" to process
+// tests interactively.
+// Ideally behavior would be deterministic, but this can be used
+// when a browser needs a "break" to be ready for tests.
+export async function aSillyDelay(): Promise<void> {
+    for (let i = 0; i < 60; i++) await nextFrame();
 }
 
 export async function fixture<T extends Element>(

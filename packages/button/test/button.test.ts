@@ -513,6 +513,32 @@ describe('Button', () => {
 
         expect(el.active).to.be.false;
     });
+    it('shows pending state after delay', async () => {
+        const el = await fixture<Button>(
+            html`
+                <sp-button label="Button">
+                    <svg slot="icon"></svg>
+                </sp-button>
+            `
+        );
+
+        await elementUpdated(el);
+        el.pending = true;
+        await elementUpdated(el);
+
+        waitUntil(
+            () => {
+                el.disabled;
+            },
+            'button is disabled',
+            { interval: 200, timeout: 1200 }
+        );
+
+        await elementUpdated(el);
+
+        expect(el.disabled).to.be.true;
+        expect(el.pending).to.be.true;
+    });
     describe('deprecated variants and attributes', () => {
         it('manages [quiet]', async () => {
             const el = await fixture<Button>(

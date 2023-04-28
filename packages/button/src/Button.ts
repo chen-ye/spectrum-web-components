@@ -12,8 +12,10 @@ governing permissions and limitations under the License.
 
 import {
     CSSResultArray,
+    html,
     PropertyValues,
     SizedMixin,
+    TemplateResult,
 } from '@spectrum-web-components/base';
 import { property } from '@spectrum-web-components/base/src/decorators.js';
 import { ButtonBase } from './ButtonBase.js';
@@ -49,6 +51,45 @@ export type ButtonTreatments = 'fill' | 'outline';
 export class Button extends SizedMixin(ButtonBase) {
     public static override get styles(): CSSResultArray {
         return [...super.styles, buttonStyles];
+    }
+
+    protected pendingCooldown = -1;
+
+    constructor() {
+        super();
+        this.addEventListener(
+            'click',
+            (event: Event): void | boolean => {
+                if (this.pending) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    event.stopPropagation();
+                    return false;
+                }
+            },
+            {
+                capture: true,
+            }
+        );
+    }
+
+    protected disabledByPending = false;
+
+    @property({ type: Boolean, reflect: true })
+    public set pending(value: boolean) {
+        if (value) {
+            this.pendingCooldown = window.setTimeout(() => {
+                if (!this.disabled) {
+                    this.disabledByPending = true;
+                }
+                this.disabled = true;
+            }, 1000);
+        } else {
+            window.clearTimeout(this.pendingCooldown);
+            if (this.disabledByPending) {
+                this.disabled = false;
+            }
+        }
     }
 
     /**
@@ -135,5 +176,16 @@ export class Button extends SizedMixin(ButtonBase) {
         if (!this.hasAttribute('variant')) {
             this.setAttribute('variant', this.variant);
         }
+    }
+
+    protected override renderButton(): TemplateResult {
+        return html`
+            ${this.buttonContent}
+            <sp-progress-circle
+                indeterminate
+                static="white"
+                size="s"
+            ></sp-progress-circle>
+        `;
     }
 }

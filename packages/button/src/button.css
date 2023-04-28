@@ -25,3 +25,24 @@ governing permissions and limitations under the License.
 ::slotted([slot='icon']) {
     inset: unset;
 }
+
+#container {
+    position: relative;
+    display: flex;
+}
+
+sp-progress-circle {
+    display: none;
+}
+
+:host([pending][disabled]) sp-progress-circle {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+:host([pending][disabled]) slot[name='icon'],
+:host([pending][disabled]) #label {
+    visibility: hidden;
+}

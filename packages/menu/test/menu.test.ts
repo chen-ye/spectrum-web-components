@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -30,6 +31,14 @@ import {
 } from '../../../test/testing-helpers.js';
 import { spy } from 'sinon';
 import { sendKeys } from '@web/test-runner-commands';
+
+async function usedHeapMB(): Promise<number> {
+    // @ts-ignore
+    window.gc();
+    await nextFrame();
+    // @ts-ignore
+    return performance.memory.usedJSHeapSize / (1024 * 1024);
+}
 
 describe('Menu', () => {
     it('renders empty', async () => {
@@ -502,5 +511,67 @@ describe('Menu', () => {
         expect(secondItem.getAttribute('aria-checked')).to.equal('true');
         expect(el.value).to.equal('Second');
         expect(el.selectedItems.length).to.equal(1);
+    });
+    describe('memory leak (#3164)', () => {
+        it('releases references when opened and closed', async function () {
+            if (!window.gc || !('memory' in performance)) this.skip();
+
+            this.timeout(10000);
+
+            const iterations = 300;
+            let active = false;
+
+            const el = await fixture<HTMLElement>(
+                html`
+                    <div></div>
+                `
+            );
+
+            async function toggle(
+                forced: boolean | undefined = undefined
+            ): Promise<void> {
+                active = forced != null ? forced : !active;
+                el.innerHTML = active
+                    ? `
+                    <sp-menu>
+                        <sp-menu-item value="item-1">
+                            Deselect
+                        </sp-menu-item>
+                        <sp-menu-item value="item-2">
+                            Select inverse
+                        </sp-menu-item>
+                        <sp-menu-item value="item-3">
+                            Feather...
+                        </sp-menu-item>
+                        <sp-menu-item value="item-4">
+                            Select and mask...
+                        </sp-menu-item>
+                        <sp-menu-item value="item-5">
+                            Save selection
+                        </sp-menu-item>
+                        <sp-menu-item value="item-6" disabled>
+                            Make work path
+                        </sp-menu-item>
+                    </sp-menu>
+                `
+                    : '';
+                await nextFrame();
+            }
+
+            // "shake things out" to get a good first reading
+            for (let i = 0; i < 5; i++) {
+                await toggle();
+            }
+            await toggle(false);
+            const beforeMB = await usedHeapMB();
+
+            for (let i = 0; i < iterations; i++) {
+                await toggle();
+            }
+            await toggle(false);
+            const afterMB = await usedHeapMB();
+
+            expect(afterMB - beforeMB).to.be.approximately(0, 0.1);
+        });
     });
 });

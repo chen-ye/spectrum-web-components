@@ -21,6 +21,9 @@ export const chromium = playwrightLauncher({
         browser.newContext({
             ignoreHTTPSErrors: true,
         }),
+    launchOptions: {
+        args: ['--enable-precise-memory-info', '--js-flags=--expose-gc'],
+    },
 });
 
 export const chromiumWithFlags = playwrightLauncher({

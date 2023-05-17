@@ -62,8 +62,8 @@
         "lit-html"
     ],
     "dependencies": {
-        "@lit-labs/observers": "^2.0.0",
-        "@lit-labs/virtualizer": "^2.0.2",
+        "@lit-labs/observers": "2.0.1-pre.0",
+        "@lit-labs/virtualizer": "2.0.2-pre.0",
         "@spectrum-web-components/base": "^0.34.0",
         "@spectrum-web-components/reactive-controllers": "^0.34.0"
     },

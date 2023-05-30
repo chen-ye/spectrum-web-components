@@ -539,8 +539,13 @@ governing permissions and limitations under the License.
         var(--spectrum-menu-item-checkmark-width)
     );
 }
-.checkmark--withAdjacentText,
-.icon--workflow-icon {
+::slotted([slot='icon']) {
+    margin-inline-end: var(
+        --mod-menu-item-label-text-to-visual,
+        var(--spectrum-menu-item-label-text-to-visual)
+    );
+}
+.checkmark--withAdjacentText {
     margin-inline-end: var(
         --mod-menu-item-label-text-to-visual,
         var(--spectrum-menu-item-label-text-to-visual)

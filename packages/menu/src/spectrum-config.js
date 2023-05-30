@@ -97,16 +97,16 @@ const config = {
                     'spectrum-Menu-checkmark--withAdjacentIcon',
                     'checkmark--withAdjacentIcon'
                 ),
-                converter.classToClass(
-                    'spectrum-Menu-itemIcon--workflowIcon',
-                    'icon--workflow-icon'
-                ),
                 converter.classToAttribute(
                     'spectrum-Menu-item--drillIn',
                     'has-submenu'
                 ),
                 converter.classToSlotted('spectrum-Icon', 'icon'),
                 converter.classToSlotted('spectrum-Menu-itemIcon', 'icon'),
+                converter.classToSlotted(
+                    'spectrum-Menu-itemIcon--workflowIcon',
+                    'icon'
+                ),
                 converter.classToSlotted('spectrum-Menu-itemValue', 'value'),
                 converter.classToClass(
                     'spectrum-menu-itemSelection',

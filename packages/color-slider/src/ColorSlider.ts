@@ -181,11 +181,15 @@ export class ColorSlider extends Focusable {
 
     public override focus(focusOptions: FocusOptions = {}): void {
         super.focus(focusOptions);
-        this.forwardFocus();
+        this.forwardFocus(this.hasVisibleFocusInTree());
     }
 
-    private forwardFocus(): void {
-        this.focused = this.hasVisibleFocusInTree();
+    private handleHandleFocus(): void {
+        this.forwardFocus(this.handle.hasVisibleFocusInTree());
+    }
+
+    private forwardFocus(focused: boolean): void {
+        this.focused = focused;
         this.input.focus();
     }
 
@@ -310,7 +314,7 @@ export class ColorSlider extends Focusable {
             </div>
             <sp-color-handle
                 tabindex=${ifDefined(this.focused ? undefined : '0')}
-                @focus=${this.forwardFocus}
+                @focus=${this.handleHandleFocus}
                 ?focused=${this.focused}
                 class="handle"
                 color="hsl(${this.value}, 100%, 50%)"

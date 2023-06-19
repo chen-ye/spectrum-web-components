@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.33.2](https://github.com/adobe/spectrum-web-components/compare/v0.33.1...v0.33.2) (2023-06-14)
+
+**Note:** Version bump only for package @spectrum-web-components/color-slider
+
+## [0.33.1](https://github.com/adobe/spectrum-web-components/compare/v0.33.0...v0.33.1) (2023-06-14)
+
+### Bug Fixes
+
+-   **color-slider:** use inset-block-_ and inset-inline-_ and fix RTL orientation and behavior [#3301](https://github.com/adobe/spectrum-web-components/issues/3301) ([52aa328](https://github.com/adobe/spectrum-web-components/commit/52aa328ea7e4c2e40c7688ce9daa233cc9936be0))
+
+# [0.33.0](https://github.com/adobe/spectrum-web-components/compare/v0.32.0...v0.33.0) (2023-06-08)
+
+### Bug Fixes
+
+-   **color-slider:** vertical variant orientation is upside down [#3291](https://github.com/adobe/spectrum-web-components/issues/3291) ([67c7e0a](https://github.com/adobe/spectrum-web-components/commit/67c7e0a426b74aec9e74ca50d0e4f77bb76a0064))
+
 # [0.32.0](https://github.com/adobe/spectrum-web-components/compare/v0.31.0...v0.32.0) (2023-06-01)
 
 **Note:** Version bump only for package @spectrum-web-components/color-slider

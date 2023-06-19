@@ -20,12 +20,21 @@ governing permissions and limitations under the License.
     touch-action: none;
 }
 
+:host([vertical]) .handle {
+    inset-block-start: unset;
+    inset-block-end: 0;
+}
+
 :host(:focus) {
     outline: none;
 }
 
 .gradient {
     overflow: hidden;
+}
+
+:host([dir='rtl']) .gradient {
+    transform: scaleX(-1);
 }
 
 ::slotted(*) {

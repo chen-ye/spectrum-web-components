@@ -4563,10 +4563,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-4.0.48.tgz#1998192c0c88d4d752cd03d4f48631da6a4b97d4"
   integrity sha512-OCh/wmhB+yFnYCj/UPkYPOXDxS3BveCy3ic5wILn/cmIux/jzrdqNBZPI9qmmKaBU5tqxbOl51CnXbBzKNrs4w==
 
-"@spectrum-css/menu@^5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/menu/-/menu-5.0.0-beta.3.tgz#68c8f5eab57ef230c4ebe5e9cc6a6bcf9b7d815e"
-  integrity sha512-5Y0MlnaDg+bCgjfytHPTC/H5/mqPCJuIthWSDCNfK8MdAQlBqKb24XZwv5snnMjrc7yEQ+xE9ux5fn2BCOYV3Q==
+"@spectrum-css/menu@^5.0.0-beta.4":
+  version "5.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/menu/-/menu-5.0.0-beta.4.tgz#f55f9d233f7ea368636cff71207ab1d7c688cadf"
+  integrity sha512-U7kRw0YIMPULMshwR2bhDXVRQFdINxhrINP+JsR34yJGRDT+sG0kRPS0aVDdRJ3WwEc9MvW+kjkArxBvIJjpwg==
 
 "@spectrum-css/modal@^3.0.46":
   version "3.0.46"

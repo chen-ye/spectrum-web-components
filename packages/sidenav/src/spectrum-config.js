@@ -49,7 +49,11 @@ const config = {
                 converter.classToAttribute('is-disabled', 'disabled'),
                 converter.classToId('spectrum-SideNav-itemLink', 'item-link'),
                 converter.classToId('spectrum-SideNav', 'list'),
-                converter.classToSlotted('spectrum-SideNav-itemIcon', 'icon'),
+                converter.classToSlotted('spectrum-Icon', 'icon'),
+                converter.classToSlotted(
+                    'spectrum-SideNav-link-text',
+                    'link-text'
+                ),
                 {
                     // prevents hoisting .focus-ring to :host as :focus-visible
                     find: [builder.class('focus-ring')],

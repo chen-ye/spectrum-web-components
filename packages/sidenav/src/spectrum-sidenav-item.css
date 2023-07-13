@@ -292,7 +292,7 @@ governing permissions and limitations under the License.
         color var(--spectrum-animation-duration-100) ease-out;
     word-break: break-word;
 }
-#item-link .spectrum-SideNav-link-text {
+#item-link ::slotted([slot='link-text']) {
     margin-block-end: var(
         --mod-sidenav-bottom-to-label,
         var(--spectrum-sidenav-bottom-to-label)
@@ -302,7 +302,7 @@ governing permissions and limitations under the License.
         var(--spectrum-sidenav-top-to-label)
     );
 }
-#item-link .spectrum-Icon {
+#item-link ::slotted([slot='icon']) {
     block-size: var(--spectrum-sidenav-icon-size);
     flex-shrink: 0;
     inline-size: var(--spectrum-sidenav-icon-size);
@@ -408,7 +408,7 @@ governing permissions and limitations under the License.
     );
 }
 @media (forced-colors: active) {
-    #list .spectrum-Icon {
+    #list ::slotted([slot='icon']) {
         forced-color-adjust: preserve-parent-color;
     }
     :host {

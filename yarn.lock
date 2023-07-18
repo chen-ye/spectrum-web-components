@@ -5454,6 +5454,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/modal/-/modal-3.0.47.tgz#128f96def4218f5ed011793a8d589b545034ed20"
   integrity sha512-qTEze1f0QNS5RER4kKZTTPWfakB92ATAAAYrDtvFm6pjg2iKKvlqdtMq4QOoooNXhE4nPeO/JWI9HWOTMboF6g==
 
+"@spectrum-css/opacitycheckerboard@^1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/opacitycheckerboard/-/opacitycheckerboard-1.0.0-alpha.0.tgz#094af0671e7cdb972c1579a825cc25cf6fd28159"
+  integrity sha512-kGjQFP/+Wgw2SLTetM5XF+WdBl5DMX2YJKLhcUrVxKaGG4iUpjw+q7apg453dUd1zZMFVyVOIfud4g1xEDH63w==
+
 "@spectrum-css/picker@^4.0.19":
   version "4.0.19"
   resolved "https://registry.yarnpkg.com/@spectrum-css/picker/-/picker-4.0.19.tgz#978676dbad35ea07f3f8756d374a88172f118b07"

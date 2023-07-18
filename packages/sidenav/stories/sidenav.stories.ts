@@ -36,7 +36,7 @@ export const Default = ({
             <sp-sidenav-item selected value="Section 2" label="Section 2">
                 <span slot="link-text">Section 2</span>
             </sp-sidenav-item>
-            <sp-sidenav-heading label="CATEGORY 1">
+            <sp-sidenav-heading label="Category 1">
                 <sp-sidenav-item value="Section 3" label="Section 3">
                     <span slot="link-text">Section 3</span>
                 </sp-sidenav-item>
@@ -59,7 +59,7 @@ export const Multilevel = ({
                 <span slot="link-text">foo</span>
             </sp-sidenav-item>
             <sp-sidenav-item value="baz" label="baz">
-                <span slot="link-text">Baz</span>
+                <span slot="link-text">baz</span>
                 <sp-sidenav-item value="2.1" label="2.1">
                     <span slot="link-text">2.1</span>
                 </sp-sidenav-item>
@@ -91,7 +91,7 @@ Multilevel.storyName = 'Multi-level';
 export const levelsAndDisabled = (): TemplateResult => {
     return html`
         <sp-sidenav>
-            <sp-sidenav-heading label="CATEGORY 1">
+            <sp-sidenav-heading label="Category 1">
                 <sp-sidenav-item value="Section 1">
                     <span slot="link-text">Section 1</span>
                 </sp-sidenav-item>
@@ -112,7 +112,7 @@ export const levelsAndDisabled = (): TemplateResult => {
 export const manageTabIndex = (): TemplateResult => {
     return html`
         <sp-sidenav manage-tab-index>
-            <sp-sidenav-heading label="CATEGORY 1">
+            <sp-sidenav-heading label="Category 1">
                 <sp-sidenav-item value="Section 0" label="Section 0">
                     <span slot="link-text">Section 0</span>
                 </sp-sidenav-item>
@@ -140,7 +140,7 @@ export const Hrefs = ({
 }): TemplateResult => {
     return html`
         <sp-sidenav @change=${onChange} value="current">
-            <sp-sidenav-heading label="GITHUB">
+            <sp-sidenav-heading label="Github">
                 <sp-sidenav-item
                     href=${window.location.href}
                     label="Current"

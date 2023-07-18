@@ -30,19 +30,24 @@ export const Default = ({
 }): TemplateResult => {
     return html`
         <sp-sidenav @change=${onChange} value="Section 1">
-            <sp-sidenav-item value="Section 1" label="Section 1">
-                <span slot="link-text">Section 1</span>
-            </sp-sidenav-item>
-            <sp-sidenav-item selected value="Section 2" label="Section 2">
-                <span slot="link-text">Section 2</span>
-            </sp-sidenav-item>
+            <sp-sidenav-item
+                value="Section 1"
+                label="Section 1"
+            ></sp-sidenav-item>
+            <sp-sidenav-item
+                selected
+                value="Section 2"
+                label="Section 2"
+            ></sp-sidenav-item>
             <sp-sidenav-heading label="Category 1">
-                <sp-sidenav-item value="Section 3" label="Section 3">
-                    <span slot="link-text">Section 3</span>
-                </sp-sidenav-item>
-                <sp-sidenav-item value="Section 4" label="Section 4">
-                    <span slot="link-text">Section 4</span>
-                </sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 3"
+                    label="Section 3"
+                ></sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 4"
+                    label="Section 4"
+                ></sp-sidenav-item>
             </sp-sidenav-heading>
         </sp-sidenav>
     `;
@@ -55,33 +60,24 @@ export const Multilevel = ({
 }): TemplateResult => {
     return html`
         <sp-sidenav variant="multilevel" value="2.3.1" @change=${onChange}>
-            <sp-sidenav-item value="foo" label="foo">
-                <span slot="link-text">foo</span>
-            </sp-sidenav-item>
+            <sp-sidenav-item value="foo" label="foo"></sp-sidenav-item>
             <sp-sidenav-item value="baz" label="baz">
-                <span slot="link-text">baz</span>
-                <sp-sidenav-item value="2.1" label="2.1">
-                    <span slot="link-text">2.1</span>
-                </sp-sidenav-item>
-                <sp-sidenav-item value="2.2" label="2.2">
-                    <span slot="link-text">2.2</span>
-                </sp-sidenav-item>
+                <sp-sidenav-item value="2.1" label="2.1"></sp-sidenav-item>
+                <sp-sidenav-item value="2.2" label="2.2"></sp-sidenav-item>
                 <sp-sidenav-item value="2.3" label="2.3">
-                    <span slot="link-text">2.3</span>
-                    <sp-sidenav-item value="2.3.1" label="2.3.1">
-                        <span slot="link-text">2.3.1</span>
-                    </sp-sidenav-item>
-                    <sp-sidenav-item disabled value="2.3.2" label="2.3.2">
-                        <span slot="link-text">2.3.2</span>
-                    </sp-sidenav-item>
+                    <sp-sidenav-item
+                        value="2.3.1"
+                        label="2.3.1"
+                    ></sp-sidenav-item>
+                    <sp-sidenav-item
+                        disabled
+                        value="2.3.2"
+                        label="2.3.2"
+                    ></sp-sidenav-item>
                 </sp-sidenav-item>
             </sp-sidenav-item>
-            <sp-sidenav-item value="test" label="test">
-                <span slot="link-text">test</span>
-            </sp-sidenav-item>
-            <sp-sidenav-item value="hi" label="hi">
-                <span slot="link-text">hi</span>
-            </sp-sidenav-item>
+            <sp-sidenav-item value="test" label="test"></sp-sidenav-item>
+            <sp-sidenav-item value="hi" label="hi"></sp-sidenav-item>
         </sp-sidenav>
     `;
 };
@@ -92,17 +88,20 @@ export const levelsAndDisabled = (): TemplateResult => {
     return html`
         <sp-sidenav>
             <sp-sidenav-heading label="Category 1">
-                <sp-sidenav-item value="Section 1">
-                    <span slot="link-text">Section 1</span>
-                </sp-sidenav-item>
-                <sp-sidenav-item value="Section 2" disabled>
-                    <span slot="link-text">Section 2</span>
-                </sp-sidenav-item>
-                <sp-sidenav-item value="Section 3" expanded>
-                    <span slot="link-text">Section 3</span>
-                    <sp-sidenav-item value="Section 3a">
-                        <span slot="link-text">Section 3a</span>
-                    </sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 1"
+                    label="Section 1"
+                ></sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 2"
+                    label="Section 2"
+                    disabled
+                ></sp-sidenav-item>
+                <sp-sidenav-item value="Section 3" label="Section 3" expanded>
+                    <sp-sidenav-item
+                        value="Section 3a"
+                        label="Section 3a"
+                    ></sp-sidenav-item>
                 </sp-sidenav-item>
             </sp-sidenav-heading>
         </sp-sidenav>
@@ -113,20 +112,25 @@ export const manageTabIndex = (): TemplateResult => {
     return html`
         <sp-sidenav manage-tab-index>
             <sp-sidenav-heading label="Category 1">
-                <sp-sidenav-item value="Section 0" label="Section 0">
-                    <span slot="link-text">Section 0</span>
-                </sp-sidenav-item>
-                <sp-sidenav-item value="Section 1" label="Section 1" selected>
-                    <span slot="link-text">Section 1</span>
-                </sp-sidenav-item>
-                <sp-sidenav-item value="Section 2" label="Section 2" disabled>
-                    <span slot="link-text">Section 2</span>
-                </sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 0"
+                    label="Section 0"
+                ></sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 1"
+                    label="Section 1"
+                    selected
+                ></sp-sidenav-item>
+                <sp-sidenav-item
+                    value="Section 2"
+                    label="Section 2"
+                    disabled
+                ></sp-sidenav-item>
                 <sp-sidenav-item value="Section 3" label="Section 3">
-                    <span slot="link-text">Section 3</span>
-                    <sp-sidenav-item value="Section 3a" label="Section 3a">
-                        <span slot="link-text">Section 3a</span>
-                    </sp-sidenav-item>
+                    <sp-sidenav-item
+                        value="Section 3a"
+                        label="Section 3a"
+                    ></sp-sidenav-item>
                 </sp-sidenav-item>
             </sp-sidenav-heading>
         </sp-sidenav>
@@ -146,27 +150,19 @@ export const Hrefs = ({
                     label="Current"
                     value="current"
                     selected
-                >
-                    <span slot="link-text">Current</span>
-                </sp-sidenav-item>
+                ></sp-sidenav-item>
                 <sp-sidenav-item
                     href="https://github.com/adobe/spectrum-web-components"
                     label="Code"
-                >
-                    <span slot="link-text">Code</span>
-                </sp-sidenav-item>
+                ></sp-sidenav-item>
                 <sp-sidenav-item
                     href="https://github.com/adobe/spectrum-web-components/issues"
                     label="Issues"
-                >
-                    <span slot="link-text">Issues</span>
-                </sp-sidenav-item>
+                ></sp-sidenav-item>
                 <sp-sidenav-item
                     href="https://github.com/adobe/spectrum-web-components/pulls"
                     label="Pull Requests"
-                >
-                    <span slot="link-text">Pull Requests</span>
-                </sp-sidenav-item>
+                ></sp-sidenav-item>
             </sp-sidenav-heading>
         </sp-sidenav>
     `;

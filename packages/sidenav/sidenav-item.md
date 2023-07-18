@@ -28,9 +28,11 @@ import { SidenavItem } from '@spectrum-web-components/sidenav';
 
 ```html
 <sp-sidenav>
-    <sp-sidenav-item value="Docs" label="Docs" href="/components/sidenav">
-        <span slot="link-text">Docs</span>
-    </sp-sidenav-item>
+    <sp-sidenav-item
+        value="Docs"
+        label="Docs"
+        href="/components/sidenav"
+    ></sp-sidenav-item>
 </sp-sidenav>
 ```
 
@@ -39,21 +41,15 @@ import { SidenavItem } from '@spectrum-web-components/sidenav';
 ```html
 <sp-sidenav>
     <sp-sidenav-item value="Styles" label="Styles" expanded>
-        <span slot="link-text">Styles</span>
         <sp-sidenav-item value="Color" label="Color">
-            <span slot="link-text">Color</span>
         </sp-sidenav-item>
         <sp-sidenav-item value="Grid" label="Grid" expanded>
-            <span slot="link-text">Grid</span>
             <sp-sidenav-item value="Layout" label="Layout">
-                <span slot="link-text">Layout</span>
             </sp-sidenav-item>
             <sp-sidenav-item value="Responsive" label="Responsive">
-                <span slot="link-text">Responsive</span>
             </sp-sidenav-item>
         </sp-sidenav-item>
         <sp-sidenav-item value="Typography" label="Typography">
-            <span slot="link-text">Typography</span>
         </sp-sidenav-item>
     </sp-sidenav-item>
 </sp-sidenav-itm>
@@ -65,7 +61,6 @@ import { SidenavItem } from '@spectrum-web-components/sidenav';
 <sp-sidenav>
     <sp-sidenav-item value="Section Title 1" label="Section Title 1">
         <sp-icon-star slot="icon"></sp-icon-star>
-        <span slot="link-text">Section 2</span>
     </sp-sidenav-item>
 </sp-sidenav>
 ```

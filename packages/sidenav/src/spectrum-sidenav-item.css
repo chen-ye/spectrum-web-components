@@ -292,7 +292,7 @@ governing permissions and limitations under the License.
         color var(--spectrum-animation-duration-100) ease-out;
     word-break: break-word;
 }
-#item-link ::slotted([slot='link-text']) {
+#item-link #link-text {
     margin-block-end: var(
         --mod-sidenav-bottom-to-label,
         var(--spectrum-sidenav-bottom-to-label)

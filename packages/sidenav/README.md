@@ -41,33 +41,41 @@ import {
 
 ```html
 <sp-sidenav defaultValue="Docs">
-    <sp-sidenav-item value="Docs" href="/components/SideNav">
-        <span slot="link-text">Docs</span>
-    </sp-sidenav-item>
-    <sp-sidenav-item value="Guides" href="/guides/getting_started">
-        <span slot="link-text">Guides</span>
-    </sp-sidenav-item>
-    <sp-sidenav-item value="Community" href="/community">
-        <span slot="link-text">Community</span>
-    </sp-sidenav-item>
-    <sp-sidenav-item value="Storybook" href="/storybook" target="_blank">
-        <span slot="link-text">Storybook</span>
-    </sp-sidenav-item>
+    <sp-sidenav-item
+        value="Docs"
+        href="/components/SideNav"
+        label="Docs"
+        selected
+    ></sp-sidenav-item>
+    <sp-sidenav-item
+        value="Guides"
+        href="/guides/getting_started"
+        label="Guides"
+    ></sp-sidenav-item>
+    <sp-sidenav-item
+        value="Community"
+        href="/community"
+        label="Community"
+    ></sp-sidenav-item>
+    <sp-sidenav-item
+        value="Storybook"
+        href="/storybook"
+        target="_blank"
+        label="Storybook"
+    ></sp-sidenav-item>
     <sp-sidenav-item
         value="Releases"
         href="http://git.corp.adobe.com/React/react-spectrum/releases"
         target="_blank"
+        label="Releases"
         disabled
-    >
-        <span slot="link-text">Releases</span>
-    </sp-sidenav-item>
+    ></sp-sidenav-item>
     <sp-sidenav-item
         value="GitHub"
         href="http://git.corp.adobe.com/React/react-spectrum"
         target="_blank"
-    >
-        <span slot="link-text">Github</span>
-    </sp-sidenav-item>
+        label="Github"
+    ></sp-sidenav-item>
 </sp-sidenav>
 ```
 
@@ -82,33 +90,22 @@ will send the user to the location of the item.
 ```html
 <sp-sidenav variant="multilevel" defaultValue="Layout">
     <sp-sidenav-item value="Guidelines" label="Guidelines">
-        <span slot="link-text">Guidelines</span>
     </sp-sidenav-item>
     <sp-sidenav-item value="Styles" label="Styles" expanded>
-        <span slot="link-text">Styles</span>
         <sp-sidenav-item value="Color" label="Color">
-            <span slot="link-text">Color</span>
         </sp-sidenav-item>
         <sp-sidenav-item value="Grid" label="Grid" expanded>
-            <span slot="link-text">Grid</span>
             <sp-sidenav-item value="Layout" label="Layout">
-                <span slot="link-text">Layout</span>
             </sp-sidenav-item>
             <sp-sidenav-item value="Responsive" label="Responsive">
-                <span slot="link-text">Responsive</span>
             </sp-sidenav-item>
         </sp-sidenav-item>
         <sp-sidenav-item value="Typography" label="Typography">
-            <span slot="link-text">Typography</span>
         </sp-sidenav-item>
     </sp-sidenav-item>
     <sp-sidenav-item value="Elements" label="Elements">
-         <span slot="link-text">Elements</span>
-
     </sp-sidenav-item>
     <sp-sidenav-item value="Patterns" label="Patterns">
-        <span slot="link-text">Patterns</span>
-
     </sp-sidenav-item>
 </sp-sidenav-itm>
 ```
@@ -119,15 +116,12 @@ will send the user to the location of the item.
 <sp-sidenav>
     <sp-sidenav-item value="Section Title 1" label="Section Title 1">
         <sp-icon-star slot="icon"></sp-icon-star>
-        <span slot="link-text">Section Title 1</span>
     </sp-sidenav-item>
     <sp-sidenav-item value="Section Title 2" label="Section Title 2">
         <sp-icon-star slot="icon"></sp-icon-star>
-        <span slot="link-text">Section Title 2</span>
     </sp-sidenav-item>
     <sp-sidenav-item value="Section Title 3" label="Section Title 3">
         <sp-icon-star slot="icon"></sp-icon-star>
-        <span slot="link-text">Section Title 3</span>
     </sp-sidenav-item>
 </sp-sidenav>
 ```
@@ -136,28 +130,15 @@ will send the user to the location of the item.
 
 ```html
 <sp-sidenav variant="multilevel">
-    <sp-sidenav-item value="Section 1" label="Section 1">
-        <span slot="link-text">Section 1</span>
-    </sp-sidenav-item>
-    <sp-sidenav-item value="Section 2" label="Section 2">
-        <span slot="link-text">Section 2</span>
-    </sp-sidenav-item>
+    <sp-sidenav-item value="Section 1" label="Section 1"></sp-sidenav-item>
+    <sp-sidenav-item value="Section 2" label="Section 2"></sp-sidenav-item>
     <sp-sidenav-heading label="Category 1">
-        <sp-sidenav-item value="Section 3" label="Section 3">
-            <span slot="link-text">Section 3</span>
-        </sp-sidenav-item>
-        <sp-sidenav-item value="Section 4" label="Section 4">
-            <span slot="link-text">Section 4</span>
-        </sp-sidenav-item>
+        <sp-sidenav-item value="Section 3" label="Section 3"></sp-sidenav-item>
+        <sp-sidenav-item value="Section 4" label="Section 4"></sp-sidenav-item>
     </sp-sidenav-heading>
     <sp-sidenav-heading label="Category 2">
-        <sp-sidenav-item value="Section 5" label="Section 5">
-            <span slot="link-text">Section 5</span>
-        </sp-sidenav-item>
-
-        <sp-sidenav-item value="Section 6" label="Section 6">
-            <span slot="link-text">Section 6</span>
-        </sp-sidenav-item>
+        <sp-sidenav-item value="Section 5" label="Section 5"></sp-sidenav-item>
+        <sp-sidenav-item value="Section 6" label="Section 6"></sp-sidenav-item>
     </sp-sidenav-heading>
 </sp-sidenav>
 ```

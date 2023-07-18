@@ -2248,6 +2248,13 @@
   resolved "https://registry.yarnpkg.com/@import-maps/resolve/-/resolve-1.0.1.tgz#1e9fcadcf23aa0822256a329aabca241879d37c9"
   integrity sha512-tWZNBIS1CoekcwlMuyG2mr0a1Wo5lb5lEHwwWvZo+5GLgr3e9LLDTtmgtCWEwBpXMkxn9D+2W9j2FY6eZQq0tA==
 
+"@internationalized/date@^3.2.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.3.0.tgz#90386d4b4e707f28507d1a1b3cc0e162ad5ee038"
+  integrity sha512-qfRd7jCIgUjabI8RxeAsxhLDRS1u8eUPX96GB5uBp1Tpm6YY6dVveE7YwsTEV6L4QOp5LKFirFHHGsL/XQwJIA==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+
 "@internationalized/number@^3.1.0":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@internationalized/number/-/number-3.1.2.tgz#4482a6ac573acfb18efd354a42008af20da6c89c"
@@ -4683,6 +4690,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/textfield/-/textfield-6.0.5.tgz#ffd378878b2a9375d0a32d1722328076fd36edac"
   integrity sha512-qh4v8JYF40C8AF0y223QqFEG/4//P4AeeARkHRZqLlMY1E+JfNTbb/zqtYs981p4Mgf0b7F+NOdpncJmfJ2nUA==
 
+"@spectrum-css/textfield@^6.0.7":
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/textfield/-/textfield-6.0.7.tgz#85c337966bf71d211c27c33eb3741d22200cd9b3"
+  integrity sha512-KCEJYr/bX+LwAZ08IcbQCVD4X5oo+LUWVA69Ndf81B3aNE83Egl0VyrlcdS5U8zbufNk0ltSZkCW0Nq6NdpNaQ==
+
 "@spectrum-css/thumbnail@^3.0.15":
   version "3.0.15"
   resolved "https://registry.yarnpkg.com/@spectrum-css/thumbnail/-/thumbnail-3.0.15.tgz#6c1a15f85cd309b75e1809813d834e1111b863ae"
@@ -4766,7 +4778,7 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
-"@swc/helpers@0.5.1":
+"@swc/helpers@0.5.1", "@swc/helpers@^0.5.0":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.1.tgz#e9031491aa3f26bfcc974a67f48bd456c8a5357a"
   integrity sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==

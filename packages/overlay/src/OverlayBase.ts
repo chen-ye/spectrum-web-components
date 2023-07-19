@@ -53,7 +53,7 @@ export type OpenableElement = HTMLElement & {
 
 const LONGPRESS_DURATION = 300;
 
-export type LongpressEvent = {
+type LongpressEvent = {
     source: 'pointer' | 'keyboard';
 };
 
@@ -169,7 +169,7 @@ export class OverlayBase extends SpectrumElement {
             this.wasOpen = this.open;
             this.open = false;
         } else {
-            this.bindEvents();
+            this.bindEvents(this.triggerElement);
             this.open = this.open || this.wasOpen;
             this.wasOpen = false;
         }
@@ -180,8 +180,8 @@ export class OverlayBase extends SpectrumElement {
     protected dispose = noop;
 
     @queryAssignedElements({
-        selector: ':not([slot="longpress-describedby-descriptor"])',
         flatten: true,
+        selector: ':not([slot="longpress-describedby-descriptor"])', // gather only elements slotted into the default slot
     })
     elements!: OpenableElement[];
 
@@ -280,7 +280,7 @@ export class OverlayBase extends SpectrumElement {
     }
 
     protected get requiresPosition(): boolean {
-        // Do no position "page" overlays as they should block the entrie UI.
+        // Do not position "page" overlays as they should block the entire UI.
         if (this.type === 'page' || !this.open) return false;
         // Do not position content without a trigger element, what would you position it in relation to?
         // Do not automaticallyu position contnent, unless it is a "hint".
@@ -410,9 +410,11 @@ export class OverlayBase extends SpectrumElement {
         triggerElement.removeEventListener('longpress', this.handleLongpress);
     }
 
-    protected bindEvents(): void {
-        const nextTriggerElement = this.triggerElement as HTMLElement;
-        if (!nextTriggerElement) return;
+    protected bindEvents(
+        triggerElement: HTMLElement | VirtualTrigger | null
+    ): void {
+        if (!this.hasNonVirtualTrigger) return;
+        const nextTriggerElement = triggerElement as HTMLElement;
         switch (this.triggerInteraction) {
             case 'click':
                 this.bindClickEvents(nextTriggerElement);
@@ -471,7 +473,7 @@ export class OverlayBase extends SpectrumElement {
         ) {
             return;
         }
-        this.bindEvents();
+        this.bindEvents(this.triggerElement);
     }
 
     private elementIds: string[] = [];
@@ -877,7 +879,7 @@ export class OverlayBase extends SpectrumElement {
             this.open = false;
         });
         if (this.hasNonVirtualTrigger) {
-            this.bindEvents();
+            this.bindEvents(this.triggerElement);
         }
     }
 

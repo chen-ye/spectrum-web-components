@@ -5349,10 +5349,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/checkbox/-/checkbox-6.1.6.tgz#1b08c66b61e9ffbedc84047072e368d264c102ef"
   integrity sha512-76IH+vt+U2tJLEvf3QDDCJxdNWmDSduyer21n+NGQb25wLqRt+TWobR+yejHU7hJD0QKyUYmIH7fmKPH8pqINA==
 
-"@spectrum-css/clearbutton@^1.2.36":
-  version "1.2.36"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/clearbutton/-/clearbutton-1.2.36.tgz#62313aa0b102392ea046c2acab70dfaf15c1cde1"
-  integrity sha512-wDu3gqYndeDadNA6yes0DOfGYXnvp3y8cKd16BJeNwKFvyEw2f5Lp0ENvqgd35Ybp/SW7wnHo+CtPBpVLdZ9xg==
+"@spectrum-css/clearbutton@^2.0.0-beta.0":
+  version "2.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/clearbutton/-/clearbutton-2.0.0-beta.0.tgz#6c59c95087c06f71693818dd9e37b003b266b395"
+  integrity sha512-Ic6pU3KFbQoTYhegeydRd0IvefjfabQMHTR8HVdkHqkEMGx8E11q0kYn3zOmBd0RC7LK42lBde2Q/97ZHgQ9kA==
 
 "@spectrum-css/closebutton@^3.1.8":
   version "3.1.8"

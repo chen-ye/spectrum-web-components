@@ -27,6 +27,16 @@ governing permissions and limitations under the License.
     );
     --spectrum-slider-track-thickness: 4px;
     --spectrum-slider-handle-gap: 0px;
+    --spectrum-in-field-button-fill-stacked-inner-border-rounding: 1px;
+    --spectrum-in-field-button-edge-to-fill: 4px;
+    --spectrum-in-field-button-stacked-inner-edge-to-fill: 1px;
+    --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-medium: 5px;
+    --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-large: 7px;
+    --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-extra-large: 8px;
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-small: 1px;
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-medium: 1px;
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-large: 3px;
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-extra-large: 4px;
     --spectrum-border-width-100: 2px;
     --spectrum-accent-color-100: var(--spectrum-indigo-100);
     --spectrum-accent-color-200: var(--spectrum-indigo-200);

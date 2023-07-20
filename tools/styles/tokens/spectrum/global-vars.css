@@ -26,6 +26,24 @@ governing permissions and limitations under the License.
     --spectrum-slider-track-thickness: 2px;
     --spectrum-slider-handle-gap: 4px;
     --spectrum-picker-border-width: var(--spectrum-border-width-100);
+    --spectrum-in-field-button-fill-stacked-inner-border-rounding: 0px;
+    --spectrum-in-field-button-edge-to-fill: 0px;
+    --spectrum-in-field-button-stacked-inner-edge-to-fill: 0px;
+    --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-medium: 3px;
+    --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-large: 4px;
+    --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-extra-large: 5px;
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-small: var(
+        --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-small
+    );
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-medium: var(
+        --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-medium
+    );
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-large: var(
+        --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-large
+    );
+    --spectrum-in-field-button-inner-edge-to-disclosure-icon-stacked-extra-large: var(
+        --spectrum-in-field-button-outer-edge-to-disclosure-icon-stacked-extra-large
+    );
     --spectrum-border-width-100: 1px;
     --spectrum-accent-color-100: var(--spectrum-blue-100);
     --spectrum-accent-color-200: var(--spectrum-blue-200);

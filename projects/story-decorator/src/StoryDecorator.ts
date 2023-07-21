@@ -269,11 +269,13 @@ export class StoryDecorator extends SpectrumElement {
 
     protected handleKeydown(event: KeyboardEvent): void {
         const path = event.composedPath();
-        const hasInputOrContentEditable = path.some(
-            (node) =>
+        const hasInputOrContentEditable = path.some((node) => {
+            return (
                 node instanceof HTMLInputElement ||
-                (node as HTMLElement).hasAttribute('contenteditable')
-        );
+                (node instanceof Element &&
+                    node.hasAttribute('contenteditable'))
+            );
+        });
 
         if (hasInputOrContentEditable) {
             event.stopPropagation();

@@ -12,6 +12,7 @@ governing permissions and limitations under the License.
 
 :host,
 :root {
+    --spectrum-focus-indicator-color: var(--spectrum-indigo-1000);
     --spectrum-neutral-background-color-selected-default: var(
         --spectrum-gray-800
     );

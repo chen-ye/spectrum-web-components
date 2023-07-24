@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 /* THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
-:host {
+.root {
     --spectrum-picker-button-height: var(--spectrum-component-height-100);
     --spectrum-picker-button-width: var(--spectrum-component-height-100);
     --spectrum-picker-button-gap: var(--spectrum-text-to-visual-50);
@@ -61,7 +61,7 @@ governing permissions and limitations under the License.
         --spectrum-animation-duration-100
     );
 }
-:host([disabled]) {
+:host([disabled]) .root {
     --mod-picker-button-background-color: var(
         --mod-picker-button-background-color-disabled,
         var(--spectrum-disabled-background-color)
@@ -103,7 +103,7 @@ governing permissions and limitations under the License.
         var(--spectrum-disabled-content-color)
     );
 }
-:host .spectrum-PickerButton--quiet {
+.root.spectrum-PickerButton--quiet {
     --mod-picker-button-background-color: var(
         --mod-picker-button-background-color-quiet,
         transparent
@@ -125,7 +125,7 @@ governing permissions and limitations under the License.
         transparent
     );
 }
-:host([size='s']) {
+:host([size='s']) .root {
     --spectrum-picker-button-height: var(--spectrum-component-height-75);
     --spectrum-picker-button-width: var(--spectrum-component-height-75);
     --spectrum-picker-button-label-padding: var(--spectrum-spacing-75);
@@ -134,7 +134,7 @@ governing permissions and limitations under the License.
         --spectrum-field-edge-to-disclosure-icon-75
     );
 }
-:host([size='l']) {
+:host([size='l']) .root {
     --spectrum-picker-button-height: var(--spectrum-component-height-200);
     --spectrum-picker-button-width: var(--spectrum-component-height-200);
     --spectrum-picker-button-label-padding: var(--spectrum-text-to-visual-200);
@@ -143,7 +143,7 @@ governing permissions and limitations under the License.
         --spectrum-field-edge-to-disclosure-icon-200
     );
 }
-:host([size='xl']) {
+:host([size='xl']) .root {
     --spectrum-picker-button-height: var(--spectrum-component-height-300);
     --spectrum-picker-button-width: var(--spectrum-component-height-300);
     --spectrum-picker-button-label-padding: var(--spectrum-text-to-visual-300);
@@ -152,7 +152,7 @@ governing permissions and limitations under the License.
         --spectrum-field-edge-to-disclosure-icon-300
     );
 }
-:host {
+.root {
     align-items: center;
     background-color: #0000;
     block-size: var(
@@ -167,94 +167,94 @@ governing permissions and limitations under the License.
         var(--spectrum-picker-button-padding)
     );
 }
-:host(:hover) .spectrum-PickerButton-fill {
+.root:hover .spectrum-PickerButton-fill {
     background-color: var(
         --mod-picker-button-background-color-hover,
         var(--spectrum-picker-button-background-color-hover)
     );
 }
-:host(:hover) .spectrum-PickerButton-label {
+.root:hover .spectrum-PickerButton-label {
     color: var(
         --mod-picker-button-font-color-hover,
         var(--spectrum-picker-button-font-color-hover)
     );
 }
-:host(:hover) .spectrum-PickerButton-icon {
+.root:hover .spectrum-PickerButton-icon {
     color: var(
         --mod-picker-button-icon-color-hover,
         var(--spectrum-picker-button-icon-color-hover)
     );
 }
-:host([active]) .spectrum-PickerButton-fill,
-:host([open]) .spectrum-PickerButton-fill {
+:host([active]) .root .spectrum-PickerButton-fill,
+:host([open]) .root .spectrum-PickerButton-fill {
     background-color: var(
         --mod-picker-button-background-color-down,
         var(--spectrum-picker-button-background-color-down)
     );
 }
-:host([active]) .spectrum-PickerButton-label,
-:host([open]) .spectrum-PickerButton-label {
+:host([active]) .root .spectrum-PickerButton-label,
+:host([open]) .root .spectrum-PickerButton-label {
     color: var(
         --mod-picker-button-font-color-down,
         var(--spectrum-picker-button-font-color-down)
     );
 }
-:host([active]) .spectrum-PickerButton-icon,
-:host([open]) .spectrum-PickerButton-icon {
+:host([active]) .root .spectrum-PickerButton-icon,
+:host([open]) .root .spectrum-PickerButton-icon {
     color: var(
         --mod-picker-button-icon-color-down,
         var(--spectrum-picker-button-icon-color-down)
     );
 }
-:host .is-focused .spectrum-PickerButton-fill,
-:host .is-keyboardFocused .spectrum-PickerButton-fill,
-:host(:focus) .spectrum-PickerButton-fill,
-:host.focus-visible .spectrum-PickerButton-fill {
+.root.focus-visible .spectrum-PickerButton-fill,
+.root.is-focused .spectrum-PickerButton-fill,
+.root.is-keyboardFocused .spectrum-PickerButton-fill,
+.root:focus .spectrum-PickerButton-fill {
     background-color: var(
         --mod-picker-button-background-color-key-focus,
         var(--spectrum-picker-button-background-color-key-focus)
     );
 }
-:host .is-focused .spectrum-PickerButton-fill,
-:host .is-keyboardFocused .spectrum-PickerButton-fill,
-:host(:focus) .spectrum-PickerButton-fill,
-:host:focus-visible .spectrum-PickerButton-fill {
+.root.is-focused .spectrum-PickerButton-fill,
+.root.is-keyboardFocused .spectrum-PickerButton-fill,
+.root:focus .spectrum-PickerButton-fill,
+.root:focus-visible .spectrum-PickerButton-fill {
     background-color: var(
         --mod-picker-button-background-color-key-focus,
         var(--spectrum-picker-button-background-color-key-focus)
     );
 }
-:host .is-focused .spectrum-PickerButton-label,
-:host .is-keyboardFocused .spectrum-PickerButton-label,
-:host(:focus) .spectrum-PickerButton-label,
-:host.focus-visible .spectrum-PickerButton-label {
+.root.focus-visible .spectrum-PickerButton-label,
+.root.is-focused .spectrum-PickerButton-label,
+.root.is-keyboardFocused .spectrum-PickerButton-label,
+.root:focus .spectrum-PickerButton-label {
     color: var(
         --mod-picker-button-font-color-key-focus,
         var(--spectrum-picker-button-font-color-key-focus)
     );
 }
-:host .is-focused .spectrum-PickerButton-label,
-:host .is-keyboardFocused .spectrum-PickerButton-label,
-:host(:focus) .spectrum-PickerButton-label,
-:host:focus-visible .spectrum-PickerButton-label {
+.root.is-focused .spectrum-PickerButton-label,
+.root.is-keyboardFocused .spectrum-PickerButton-label,
+.root:focus .spectrum-PickerButton-label,
+.root:focus-visible .spectrum-PickerButton-label {
     color: var(
         --mod-picker-button-font-color-key-focus,
         var(--spectrum-picker-button-font-color-key-focus)
     );
 }
-:host .is-focused .spectrum-PickerButton-icon,
-:host .is-keyboardFocused .spectrum-PickerButton-icon,
-:host(:focus) .spectrum-PickerButton-icon,
-:host.focus-visible .spectrum-PickerButton-icon {
+.root.focus-visible .spectrum-PickerButton-icon,
+.root.is-focused .spectrum-PickerButton-icon,
+.root.is-keyboardFocused .spectrum-PickerButton-icon,
+.root:focus .spectrum-PickerButton-icon {
     color: var(
         --mod-picker-button-icon-color-key-focus,
         var(--spectrum-picker-button-icon-color-key-focus)
     );
 }
-:host .is-focused .spectrum-PickerButton-icon,
-:host .is-keyboardFocused .spectrum-PickerButton-icon,
-:host(:focus) .spectrum-PickerButton-icon,
-:host:focus-visible .spectrum-PickerButton-icon {
+.root.is-focused .spectrum-PickerButton-icon,
+.root.is-keyboardFocused .spectrum-PickerButton-icon,
+.root:focus .spectrum-PickerButton-icon,
+.root:focus-visible .spectrum-PickerButton-icon {
     color: var(
         --mod-picker-button-icon-color-key-focus,
         var(--spectrum-picker-button-icon-color-key-focus)
@@ -437,7 +437,7 @@ governing permissions and limitations under the License.
 .textuiicon .spectrum-PickerButton-fill {
     inline-size: auto;
 }
-:host {
+.root {
     --spectrum-picker-button-background-color: var(
         --system-spectrum-pickerbutton-spectrum-picker-button-background-color
     );
